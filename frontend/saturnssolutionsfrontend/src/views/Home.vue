@@ -39,7 +39,7 @@ export default {
 <style scoped>
   .hero {
     text-align: center;
-    background-image: url('https://cdn.auth0.com/blog/vue-meetup/event-banner.png');
+    background-image: url('https://images.pexels.com/photos/2068975/pexels-photo-2068975.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
