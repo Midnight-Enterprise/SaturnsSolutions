@@ -24,9 +24,17 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-dark" @click="changeComponent">
-              <strong>Sign In</strong>
-            </a>
+            <div v-if="!$auth.loading">
+              <a class="button is-dark" @click="login" v-if="!$auth.isAuthenticated">
+                <strong>Sign In</strong>
+              </a>
+              <a
+                v-if="$auth.isAuthenticated"
+                @click="logout"
+                class="button is-dark"
+                ><strong>Log out</strong></a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -34,28 +42,33 @@
   </nav>
 </template>
 <script>
-  export default {
-    name: 'Nav',
-    data() {
-      return {}
+export default {
+  name: "Nav",
+  data() {
+    return {};
+  },
+  methods: {
+    login() {
+      this.$auth.loginWithRedirect();
     },
-    methods: {
-      changeComponent() {
-        this.$router.push({ name: 'Login', path: '/login' })
-      }
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
     }
-  };
+  },
+};
 </script>
 <style scoped>
-  nav {
-    margin-top: 25px;
-    margin-bottom: 30px;
-  }
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-  a.router-link-exact-active {
-    color: #d88d00;
-  }
+nav {
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+a.router-link-exact-active {
+  color: #d88d00;
+}
 </style>

@@ -20,7 +20,6 @@
 
 <script>
 export default {
-  title: 'TakeMoney - Home',
   name: 'Home',
   components: {},
   created() {
