@@ -8,9 +8,12 @@
             Your service to do not get in indebted
           </h2>
           <div class="button-block">
-            <button class="button is-xl is-dark">
+            <button class="button is-xl is-dark" @click="login" v-if="!$auth.isAuthenticated">
               Sign Up right now
             </button>
+            <h3 v-if="$auth.isAuthenticated" class="is-size-3 has-background-dark welcome">
+              Welcome, {{ $auth.user.name }}!
+            </h3>
           </div>
         </div>
       </div>
@@ -24,6 +27,11 @@ export default {
   components: {},
   created() {
     document.title = 'TakeMoney - Home';
+  },
+  methods: {
+    login() {
+      this.$auth.loginWithPopup();
+    },
   }
 }
 </script>
