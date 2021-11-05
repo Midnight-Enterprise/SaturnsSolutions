@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     login() {
-      this.$auth.loginWithPopup();
+      this.$auth.loginWithRedirect();
     },
   }
 }

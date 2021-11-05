@@ -2,10 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'bulma/css/bulma.css'
-
+import money from 'v-money';
 // Import the Auth0 configuration
 import { domain, clientId } from '../auth_config.json';
-
 // Import the plugin here
 import { Auth0Plugin } from './auth';
 
@@ -22,6 +21,7 @@ Vue.use(Auth0Plugin, {
   },
 });
 
+Vue.use(money, {precision: 2})
 
 Vue.config.productionTip = false
 new Vue({
