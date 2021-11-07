@@ -63,7 +63,7 @@
           </tr>
         </tfoot>
         <tbody>
-          <tr v-for="properValue in tableValues" :key="properValue.user">
+          <tr v-for="properValue in tableValues" :key="properValue.id">
             <th>{{ properValue.user }}</th>
             <td>
               <strong>{{ properValue.incomeProperty ? "Yes" : "Nope" }}</strong>
@@ -109,8 +109,14 @@ export default {
       },
     };
   },
-  created() {
+  mounted() {
     document.title = "TakeMoney - Finance";
+    api.get('/api/v1/users').then((result) => {
+      const { data } = result;
+      data.map(user => {
+        this.tableValues.push(user);
+      })
+    });
   },
   methods: {
     addPersonalValues() {
@@ -122,16 +128,6 @@ export default {
       })
       this.$forceUpdate();
       this.cleaningFields();
-      this.retrivingData();
-    },
-    retrivingData() {
-      api.get('/api/v1/users').then((result) => {
-        const { data } = result;
-        data.map(user => {
-          this.tableValues.push(user);
-        })
-        this.$forceUpdate();
-      });
     },
     cleaningFields() {
       this.valueIncome = "";
