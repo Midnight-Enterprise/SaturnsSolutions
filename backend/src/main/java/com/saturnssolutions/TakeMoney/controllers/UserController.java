@@ -57,7 +57,7 @@ public class UserController {
 
     @CrossOrigin
     @GetMapping("/users/total")
-    public Float getTotal(){
+    public List<Object[]> getTotal(){
         return userService.getTotal();
     }
 }

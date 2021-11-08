@@ -14,6 +14,9 @@
             <h3 v-if="$auth.isAuthenticated" class="is-size-3 has-background-dark welcome">
               Welcome, {{ $auth.user.name }}!
             </h3>
+            <h3 v-if="$auth.isAuthenticated" class="is-size-3 has-background-dark welcome">
+              Your total is {{ `US$:${data[0]}` }}!
+            </h3>
           </div>
         </div>
       </div>
@@ -22,11 +25,23 @@
 </template>
 
 <script>
+import api from "../requests/index";
 export default {
   name: 'Home',
   components: {},
+  data(){
+    return{
+      data: {},
+    }
+  },
   created() {
     document.title = 'TakeMoney - Home';
+    api.get('/api/v1/users/total').then( result => {
+      const {data} = result;
+      this.data = data.map((value) => {
+        return value[6]
+      });
+    })
   },
   methods: {
     login() {

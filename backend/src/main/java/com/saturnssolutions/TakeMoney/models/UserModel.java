@@ -11,8 +11,8 @@ public class UserModel {
     private Integer id;
 
     private String user;
-    private BigDecimal valueIncome;
-    private BigDecimal outcomeValue;
+    private Float valueIncome;
+    private Float outcomeValue;
     private Float total;
     private Boolean incomeProperty;
 
@@ -32,19 +32,19 @@ public class UserModel {
         this.user = user;
     }
 
-    public BigDecimal getValueIncome() {
+    public Float getValueIncome() {
         return valueIncome;
     }
 
-    public void setValueIncome(BigDecimal valueIncome) {
+    public void setValueIncome(Float valueIncome) {
         this.valueIncome = valueIncome;
     }
 
-    public BigDecimal getOutcomeValue() {
+    public Float getOutcomeValue() {
         return outcomeValue;
     }
 
-    public void setOutcomeValue(BigDecimal outcomeValue) {
+    public void setOutcomeValue(Float outcomeValue) {
         this.outcomeValue = outcomeValue;
     }
 
@@ -60,7 +60,7 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(Integer id, String user, BigDecimal valueIncome, BigDecimal outcomeValue, Float total) {
+    public UserModel(Integer id, String user, Float valueIncome, Float outcomeValue, Float total) {
         this.id = id;
         this.user = user;
         this.valueIncome = valueIncome;

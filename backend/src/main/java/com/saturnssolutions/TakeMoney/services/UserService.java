@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -31,9 +32,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public Float getTotal() {
-        UserModel userModel = new UserModel();
-        Float totalValue = userModel.getValueIncome().floatValue() + userModel.getOutcomeValue().floatValue();
-        return userModel.setTotal(totalValue);
+    public List<Object[]> getTotal() {
+        return userRepository.findAllByTotal();
     }
 }
