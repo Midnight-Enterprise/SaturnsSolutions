@@ -33,8 +33,9 @@ public class UserController {
     }
     @CrossOrigin
     @PostMapping("/users")
-    public void users(@RequestBody UserModel user) {
-        userService.saveUser(user);
+    public ResponseEntity<UserModel> users(@RequestBody UserModel user) {
+        UserModel userToBeSaved = userService.saveUser(user);
+        return ResponseEntity.ok().body(userToBeSaved);
     }
     @CrossOrigin
     @PutMapping("/users/{id}")

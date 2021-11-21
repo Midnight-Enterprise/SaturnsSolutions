@@ -20,8 +20,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void saveUser(UserModel user) {
-        userRepository.save(user);
+    public UserModel saveUser(UserModel user) {
+       return userRepository.save(user);
     }
 
     public UserModel getUser (Integer id) {
