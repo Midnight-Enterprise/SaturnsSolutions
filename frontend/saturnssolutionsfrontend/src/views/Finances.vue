@@ -49,6 +49,7 @@
 <script>
 import { Money } from "v-money";
 import api from '../requests/index';
+import Finance from '../factories/FinancesFactory/Finance';
 export default {
   components: {
     Money,
@@ -62,6 +63,7 @@ export default {
       tableValues: [],
       users: [],
       data: {},
+      factoryFinance: {},
       money: {
         prefix: "US$",
         decimal: ".",
@@ -73,20 +75,15 @@ export default {
   },
   mounted() {
     document.title = "TakeMoney - Finance";
-    api.get('/api/v1/users').then((result) => {
-      const { data } = result;
-      data.map(user => {
-        this.tableValues.push(user);
-      })
-    });
   },
   methods: {
     addPersonalValues() {
+      this.factoryFinance = Finance(this.valueIncome, this.outcomeValue, this.isIncomeValue, this.$auth.user.name);
       api.post('/api/v1/users', this.data = {
-        valueIncome: this.valueIncome,
-        outcomeValue: this.outcomeValue,
-        incomeProperty: this.isIncomeValue,
-        user: this.$auth.user.name
+        valueIncome: this.factoryFinance.valueIncome,
+        outcomeValue: this.factoryFinance.outcomeValue,
+        incomeProperty: this.factoryFinance.isIncomeValue,
+        user: this.factoryFinance.user
       })
       this.$forceUpdate();
       this.cleaningFields();
