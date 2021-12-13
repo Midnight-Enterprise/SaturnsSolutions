@@ -6,7 +6,7 @@
     </section>
     <section class="columns">
       <section class="founder-section">
-        <h1>Meet the founder</h1>
+        <h1>Meet the founders</h1>
         <div class="break-word">
           <p>
             <strong>Gabriel Nunes</strong> is the TakeMoney founder. He really
